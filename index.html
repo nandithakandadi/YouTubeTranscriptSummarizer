@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Powered YouTube Transcript Summarizer</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("/static/images/dfv.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* semi-transparent to blend with the background */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ff4b2b;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #eeeeee;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        input[type="text"]::placeholder {
+            color: #ccc;
+        }
+
+        button {
+            background-color: #ff4b2b;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff416c;
+        }
+
+        .video-preview {
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 AI Powered YouTube Transcript Summarizer</h1>
+        <h2>Summarize any YouTube video in seconds with Gemini AI</h2>
+
+        <form action="/analyze" method="POST">
+            <input type="text" name="youtube_url" id="youtube_url" placeholder="Enter YouTube Video URL..." required>
+            <button type="submit">Summarize Now</button>
+        </form>
+
+        <div class="video-preview" id="videoPreview"></div>
+
+        <div class="footer">Made with ❤️ using Flask & Gemini AI</div>
+    </div>
+
+    <script>
+        const input = document.getElementById('youtube_url');
+        const preview = document.getElementById('videoPreview');
+
+        input.addEventListener('input', () => {
+            const url = input.value;
+            const videoId = extractVideoID(url);
+
+            if (videoId) {
+                preview.innerHTML = `
+                    <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                `;
+            } else {
+                preview.innerHTML = '';
+            }
+        });
+
+        function extractVideoID(url) {
+            let videoId = null;
+            if (url.includes('youtube.com/watch?v=')) {
+                videoId = url.split('v=')[1].split('&')[0];
+            } else if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            }
+            return videoId;
+        }
+    </script>
+</body>
+</html>

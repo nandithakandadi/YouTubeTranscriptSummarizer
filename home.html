@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AI-Powered YouTube Transcript Summarizer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: url('/static/home.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.7);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 255, 150, 0.2);
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-52%);
+            box-shadow: 0 16px 50px rgba(0, 255, 150, 0.3);
+        }
+
+        .logo {
+            width: 140px;
+            animation: float 3s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+            /* filter: brightness(0) invert(1); REMOVE THIS */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-12px); }
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        .description {
+            font-size: 18px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(45deg, #00ff7f, #00bfff);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 255, 150, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(45deg, #00bfff, #00ff7f);
+            box-shadow: 0 8px 25px rgba(0, 255, 150, 0.6);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .logo {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <!-- Option 1: Normal YouTube logo -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" class="logo" alt="YouTube Logo">
+        
+        <!-- Option 2: Custom logo if needed -->
+        <!-- <img src="/static/your-white-logo.png" class="logo" alt="YouTube Logo"> -->
+        
+        <h1>AI-Powered YouTube Transcript Summarizer</h1>
+
+        <p class="description">
+            Summarize YouTube videos in seconds using advanced AI technology.
+            Extract transcripts, analyze key insights, and generate comprehensive summaries automatically.
+        </p>
+
+        <p class="description">
+            Ideal for researchers, students, and content creators who need quick and accurate video breakdowns—without watching the entire content!
+        </p>
+
+        <a href="/index" class="start-btn">🚀 Get Started</a>
+    </div>
+
+</body>
+</html>
